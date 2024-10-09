@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <title>Joe's Hotdog Stand</title>
+    <style>
+        body {
+            font-family:Arial, sans-serif; line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.fbcd.co/products/original/c-1000-designbundle-hot-dog-day-mockup-background-with-place-for-text-09-08-c34e00f014938d4c3fe5e601b0c2563946ecc77331b6feadfdf8f85acf2478cc.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #100f0fca;
+        }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <p>Order Details:</p>
+    <script>
+        const PRICE_HOTDOG = 4.80;
+        const PRICE_FRIES = 3.95;
+        const PRICE_DRINK = 1.99;
+        let numDogs = parseInt(prompt("How many hotdogs do you want?"), 10);
+        let numFries = parseInt(prompt("How many fries do you want?"), 10);
+        let numSoda = parseInt(prompt("How many sodas do you want?"), 10);
+        function showMoney(amount) {
+            let rounded = Math.floor(amount *100) / 100;
+            let parts = rounded.toString().split('.');
+            if(parts.length === 1)parts.push('00');
+            else if(parts[1].length === 1) parts[1] += '0';
+            return '$' + parts.join('.');
+        }
+        let subtotal = (numDogs * PRICE_HOTDOG) + (numFries * PRICE_FRIES) + (numSoda * PRICE_DRINK);
+        let discount = subtotal >= 25 ? subtotal * 0.10 : 0;
+        let subtotalAfterDiscount = subtotal - discount;
+        const TAX_RATE = 0.0625;
+        let tax = subtotalAfterDiscount * TAX_RATE;
+        let finalTotal = subtotalAfterDiscount + tax;
+
+        document.write(`Quantity of Hotdogs: ${numDogs} - ${showMoney(numDogs * PRICE_HOTDOG)}<br>`);
+        document.write(`Quantity of Fries: ${numFries} - ${showMoney(numFries * PRICE_FRIES)}<br>`);
+        document.write(`Quantity of Drink: ${numSoda} - ${showMoney(numSoda * PRICE_DRINK)}<br>`);
+        document.write(`Subtotal: ${showMoney(subtotal)}<br>`);
+        document.write(`Discount: ${showMoney(discount)}<br>`);
+        document.write(`Subtotal after discount: ${showMoney(subtotalAfterDiscount)}<br>`);
+        document.write(`Tax: ${showMoney(tax)}<br>`);
+        document.write(`Final Total: ${showMoney(finalTotal)}<br>`);
+    </script>
+</body>
+</html>
+
+
+
+
+
